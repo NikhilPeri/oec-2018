@@ -25,7 +25,9 @@ development:
   <<: *default
   database: oec_dev
   username: postgres
-  password: linux
+  password: password
+  port: 5432
+  host: 127.0.0.1
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,6 +62,10 @@ development:
 test:
   <<: *default
   database: oec_test
+  username: postgres
+  password: password
+  port: 5432
+  host: 127.0.0.1
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
