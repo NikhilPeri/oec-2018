@@ -10,16 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512233306) do
+ActiveRecord::Schema.define(version: 20170519173650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brokers", force: :cascade do |t|
     t.string "name"
-    t.bigint "balance"
+    t.bigint "cash"
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "holdings", force: :cascade do |t|
+    t.bigint "broker_id"
+    t.integer "stock_id"
+    t.bigint "shares"
+    t.bigint "book_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["broker_id"], name: "index_holdings_on_broker_id", unique: true
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "ticker"
+    t.bigint "price"
+    t.bigint "annual_vec"
+    t.bigint "quarterly_vec"
+    t.bigint "monthly_vec"
+    t.bigint "week_vec"
+    t.bigint "day_vec"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "holdings", "brokers"
 end
