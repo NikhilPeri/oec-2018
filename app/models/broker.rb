@@ -16,4 +16,12 @@ class Broker < ApplicationRecord
   def assign_cash
     self.cash = 10000000
   end
+
+  def withdraw_cash(amount)
+    self.cash -= amount
+  end
+
+  def deposit_cash(amount)
+    self.cash += amount
+  end
 end
