@@ -1,15 +1,19 @@
-require 'digest/md5'
-
 class Broker < ApplicationRecord
-  attr_reader :name, :token
+  has_many :holdings, :dependent => :destroy
+
   attr_accessor :cash
 
-  has_many :holdings, dependant: :destroy
+  after_initialize :assign_token
+  after_initialize :assign_cash
 
-  def initialize(name)
-    super
-    @name = name
-    @token = Digest::MD5.hexdigest(name)
-    @cash = 1000000
+  validates :name, presence: true
+  validates :token, presence: true
+
+  def assign_token
+    self.token = SecureRandom.urlsafe_base64(nil, false)
+  end
+
+  def assign_cash
+    self.cash = 10000000
   end
 end
