@@ -12,17 +12,18 @@ class AdminController < ApplicationController
         session[:admin_id] = @admin.id
         redirect_to '/admin'
     else
-      rendirect_to '/admin/configure'
+      redirect_to '/admin/configure'
     end
   end
 
   def authenticate
-    @admin = Admin.find_by_email(params[:email])
+    @admin = Admin.find_by_email(params[:admin][:email])
 
-    if @admin && @admin.authenticate(params[:password]).
-      session[:admin_id] = admin.id
+    if @admin && @admin.authenticate(params[:admin][:password])
+      session[:admin_id] = @admin.id
       redirect_to '/admin'
     else
+      @errors = ["invalid username/password"]
       redirect_to 'admin/login'
     end
   end
@@ -42,7 +43,7 @@ class AdminController < ApplicationController
   end
 
   def load_admin
-    @admin = Admin.find(session[:admin_id])
-    redirect_to 'admin/login' if @admin.nil?
+    @admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+    redirect_to '/admin/login' unless  @admin
   end
 end

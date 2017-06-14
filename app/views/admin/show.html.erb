@@ -1,16 +1,18 @@
-<table>
-  <tr>
-    <td>Name<\td>
-    <td>Token<\td>
-    <td>Cash<\td>
-    <td>Holdings<\td>
-  </tr>
-  <% Broker.each do |b| %>
+<div class="table-responsive">
+  <table class="table-hover">
     <tr>
-      <td>b.name<\td>
-      <td>b.token<\td>
-      <td>b.cash<\td>
-      <td>b.holding_value<\td>
+      <td>Name
+      <td>Token
+      <td>Cash
+      <td>Holdings
     </tr>
-  <% end %>
-</table>
+    <% Broker.all.each do |b| %>
+      <tr>
+        <td><%=b.name%>
+        <td><%=b.token%>
+        <td><%=b.cash%>
+        <td><%=b.holding_value%>
+      </tr>
+    <% end %>
+  </table>
+</div>
