@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticate
+  before_action :load_admin, only: :show
 
   def new
     @admin = Admin.new
@@ -12,12 +12,19 @@ class AdminController < ApplicationController
         session[:admin_id] = @admin.id
         redirect_to '/admin'
     else
-      redirect_to '/admin/configure'
+      rendirect_to '/admin/configure'
     end
   end
 
-  def show
+  def authenticate
+    @admin = Admin.find_by_email(params[:email])
 
+    if @admin && @admin.authenticate(params[:password]).
+      session[:admin_id] = admin.id
+      redirect_to '/admin'
+    else
+      redirect_to 'admin/login'
+    end
   end
 
   def add_broker
@@ -34,7 +41,8 @@ class AdminController < ApplicationController
     params.require(:admin).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def authenticate
-    render 'login' unless true #replace with actual authentication
+  def load_admin
+    @admin = Admin.find(session[:admin_id])
+    redirect_to 'admin/login' if @admin.nil?
   end
 end

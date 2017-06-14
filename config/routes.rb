@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/admin' => 'admin#show'
+
   get '/admin/configure' => 'admin#new'
   post '/admin/create' => 'admin#create'
+
+  get 'admin/login' => 'admin#login'
+  post 'admin/authenticate' => 'admin/authenticate'
 end

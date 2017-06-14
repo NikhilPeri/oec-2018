@@ -1,9 +1,12 @@
 class Admin < ApplicationRecord
   has_secure_password
 
-  validate :admin_not_configured?
+  validate :single_admin
 
-  def admin_not_configured?
-    return Admin.count == 0
+  def single_admin
+    if Admin.count != 0
+      self.errors.add(:admin, " user already configured")
+      return false
+    end
   end
 end
