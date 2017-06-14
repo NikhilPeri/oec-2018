@@ -7,6 +7,12 @@ class Broker < ApplicationRecord
   validates :name, presence: true
   validates :token, presence: true
 
+  def holding_value
+    holding_value = 0;
+    self.holdings.each { |h| holding_value += h.value }
+    return holding_value
+  end
+
   def assign_token
     self.token ||= SecureRandom.urlsafe_base64(nil, false)
   end

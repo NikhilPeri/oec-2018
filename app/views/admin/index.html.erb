@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>Name<\td>
+    <td>Token<\td>
+    <td>Cash<\td>
+    <td>Holdings<\td>
+  </tr>
+  <% Broker.each do |b| %>
+    <tr>
+      <td>b.name<\td>
+      <td>b.token<\td>
+      <td>b.cash<\td>
+      <td>b.holding_value<\td>
+    </tr>
+  <% end %>
+</table>
