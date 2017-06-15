@@ -1,0 +1,18 @@
+<% @page_title = "Admin" %>
+<div class="form">
+  <h1>Configure Admin</h1>
+  <%= form_for(:admin, :url => {:controller => 'admin', :action => 'create'}) do |f| %>
+    <p> Username:</br> <%= f.text_field :name%> </p>
+    <p> Email:</br> <%= f.text_field :email%> </p>
+    <p> Password:</br> <%= f.password_field :password%></p>
+    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
+    <%= f.submit :Signup %>
+  <% end %>
+  <% if @admin.errors.any? %>
+    <ul class="form_errors">
+    <% for message_error in @admin.errors.full_messages %>
+      <li> <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

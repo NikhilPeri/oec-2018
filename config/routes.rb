@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#show'
 
   get '/admin/configure' => 'admin#new'
-  post '/admin/create' => 'admin#create'
+  post '/admin/configure' => 'admin#create'
 
   get 'admin/login' => 'admin#login'
-  post 'admin/authenticate' => 'admin/authenticate'
+  post 'admin/login' => 'admin#authenticate'
 end

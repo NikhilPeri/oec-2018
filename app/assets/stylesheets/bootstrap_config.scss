@@ -1,2 +1,26 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+.main-wrapper {
+  margin: 40px auto 0px auto;
+  padding: 10px;
+  width: 500px;
+  background-color: #d9d6d2;
+}
+
+.cta-wrapper {
+  margin: 10px auto 0px auto;
+  width: 80px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-group .submit {
+  margin-top: 20px;
+}
+
+.form-control {
+  margin-left: 5px;
+}

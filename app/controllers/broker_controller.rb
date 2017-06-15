@@ -4,6 +4,6 @@ class BrokerController < ApplicationController
   private
 
   def load_broker
-    @broker = Broker.find(token: params[:token])
+    @broker ||= Broker.find(token: params[:token])
   end
 end

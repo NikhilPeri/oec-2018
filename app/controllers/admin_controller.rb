@@ -12,7 +12,7 @@ class AdminController < ApplicationController
         session[:admin_id] = @admin.id
         redirect_to '/admin'
     else
-      redirect_to '/admin/configure'
+      render '/admin/new'
     end
   end
 
@@ -24,7 +24,7 @@ class AdminController < ApplicationController
       redirect_to '/admin'
     else
       @errors = ["invalid username/password"]
-      redirect_to 'admin/login'
+      render 'admin/login'
     end
   end
 
