@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.integer "exchange_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.string "password_digest"
     t.string "token"
     t.bigint "cash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "day"
+    t.integer "update_frequency", limit: 2, default: 3
+    t.boolean "live", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170614140958) do
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.bigint "price"
+    t.bigint "exchange_id"
     t.bigint "annual_vec"
     t.bigint "quarterly_vec"
     t.bigint "monthly_vec"
@@ -53,7 +63,9 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.bigint "day_vec"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_stocks_on_exchange_id", unique: true
   end
 
   add_foreign_key "holdings", "brokers"
+  add_foreign_key "stocks", "exchanges"
 end

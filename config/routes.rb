@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/broker/login' => 'broker#login'
   post '/broker/login' => 'broker#authenticate'
+
   #===============================================
   #Admin routes
   #===============================================

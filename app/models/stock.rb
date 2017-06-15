@@ -11,7 +11,7 @@ class Stock < ApplicationRecord
                   self.week_vec +
                   self.day_vec
 
-    self.price += price_vector
+    self.price = self.price*price_vector
   end
 
   def generate_vectors
