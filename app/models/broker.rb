@@ -1,4 +1,6 @@
 class Broker < ApplicationRecord
+  has_secure_password
+
   has_many :holdings, :dependent => :destroy
 
   after_initialize :assign_token

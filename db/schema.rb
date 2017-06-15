@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20170614140958) do
 
   create_table "brokers", force: :cascade do |t|
     t.string "name"
-    t.bigint "cash"
+    t.string "email"
+    t.string "password_digest"
     t.string "token"
+    t.bigint "cash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
