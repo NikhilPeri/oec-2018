@@ -22,14 +22,13 @@
     </div>
     <div class="cta-wrapper">
         <%= f.submit :Configure, class: 'btn btn-default'%>
-      </div>
     </div>
-  <% end %>
-  <% if @admin.errors.any? %>
-    <ul class="form_errors">
-    <% for message_error in @admin.errors.full_messages %>
-      <li> <%= message_error %></li>
+    <% if @admin.errors.any? %>
+      <ul class="form_errors">
+      <% for message_error in @admin.errors.full_messages %>
+        <li> <%= message_error %></li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
   <% end %>
 </div>
