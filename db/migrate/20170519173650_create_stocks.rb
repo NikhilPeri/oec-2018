@@ -6,11 +6,11 @@ class CreateStocks < ActiveRecord::Migration[5.1]
       t.belongs_to :exchange, index: { unique: true }, foreign_key: true
 
 
-      t.integer :annual_vec, :limit => 5
-      t.integer :quarterly_vec, :limit => 5
-      t.integer :monthly_vec, :limit => 5
-      t.integer :week_vec, :limit => 5
-      t.integer :day_vec, :limit => 5
+      t.float :annual_vec
+      t.float :intermediate_vec
+      t.float :daily_vec
+
+      t.integer :historical_price, array: true, default: []
 
       t.timestamps
     end

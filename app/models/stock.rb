@@ -15,6 +15,10 @@ class Stock < ApplicationRecord
   end
 
   def generate_vectors
+    
+  end
+
+  def update_vectors
 
   end
 end
