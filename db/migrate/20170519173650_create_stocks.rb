@@ -3,7 +3,7 @@ class CreateStocks < ActiveRecord::Migration[5.1]
     create_table :stocks do |t|
       t.string :ticker
       t.integer :price, :limit => 8
-      t.belongs_to :exchange, index: { unique: true }, foreign_key: true
+      t.belongs_to :exchange, index: true , foreign_key: true
 
 
       t.float :annual_vec

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.string "password_digest"
     t.string "token"
     t.bigint "cash"
+    t.integer "historical_value", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,14 +57,13 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.string "ticker"
     t.bigint "price"
     t.bigint "exchange_id"
-    t.bigint "annual_vec"
-    t.bigint "quarterly_vec"
-    t.bigint "monthly_vec"
-    t.bigint "week_vec"
-    t.bigint "day_vec"
+    t.float "annual_vec"
+    t.float "intermediate_vec"
+    t.float "daily_vec"
+    t.integer "historical_price", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exchange_id"], name: "index_stocks_on_exchange_id", unique: true
+    t.index ["exchange_id"], name: "index_stocks_on_exchange_id"
   end
 
   add_foreign_key "holdings", "brokers"

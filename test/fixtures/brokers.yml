@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  balance: 
   token: MyString
 
 two:
   name: MyString
-  balance: 
   token: MyString

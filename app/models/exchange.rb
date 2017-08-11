@@ -3,9 +3,10 @@ class Exchange < ApplicationRecord
 
   def step_time
     self.time += 1
-  end
 
-  def generate_stock
-    stock = Stock.new()
+    self.stocks.each do |stock|
+      stock.update_vectors
+      stock.update_price
+    end
   end
 end

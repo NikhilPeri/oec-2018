@@ -7,6 +7,8 @@ class CreateBrokers < ActiveRecord::Migration[5.1]
       t.string :token
       t.integer :cash, :limit => 8
 
+      t.integer :historical_value, array: true, default: []
+
       t.timestamps
     end
   end

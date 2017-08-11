@@ -1,7 +1,7 @@
 class Admin < ApplicationRecord
   has_secure_password
 
-  has_one: :exchange
+  has_one :exchange
 
   validate :single_admin
 
