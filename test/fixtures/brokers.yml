@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  token: MyString
-
-two:
-  name: MyString
-  token: MyString
+  id: 1
+  name: "nikhil"
+  email: "nikhil@mail.com"
+  cash: 100000000
+  token: "access_toker"

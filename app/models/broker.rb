@@ -1,3 +1,5 @@
+class InsufficientFundsError < StandardError; end
+
 class Broker < ApplicationRecord
   has_secure_password
 
@@ -10,13 +12,26 @@ class Broker < ApplicationRecord
   validates :name, presence: true
   validates :token, presence: true
 
+  def buy(stock, shares)
+    withdraw_cash(shares*stock.price)
+
+    holding = self.holdings.find_by(stock: stock) || Holding.new(broker: self, stock: stock)
+    holding.add_shares(shares)
+    holding.save!
+  end
+
+  def sell(stock, shares)
+    deposit_cash(holding.market_value)
+    Holding.destroy(holding)
+  end
+
   def update_portfolio
     self.historical_portfolio << holding_value + self.cash
   end
 
   def holding_value
     holding_value = 0;
-    self.holdings.each { |h| holding_value += h.value }
+    self.holdings.each { |h| holding_value += h.marker_value }
     return holding_value
   end
 
@@ -29,6 +44,7 @@ class Broker < ApplicationRecord
   end
 
   def withdraw_cash(amount)
+    raise InsufficientFundsError if amount > self.cash
     self.cash -= amount
   end
 
