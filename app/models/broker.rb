@@ -1,6 +1,7 @@
 class Broker < ApplicationRecord
   has_secure_password
 
+  belongs_to :exchange
   has_many :holdings, :dependent => :destroy
 
   after_initialize :assign_token
@@ -8,6 +9,10 @@ class Broker < ApplicationRecord
 
   validates :name, presence: true
   validates :token, presence: true
+
+  def update_portfolio
+    self.historical_portfolio << holding_value + self.cash
+  end
 
   def holding_value
     holding_value = 0;

@@ -7,7 +7,9 @@ class CreateBrokers < ActiveRecord::Migration[5.1]
       t.string :token
       t.integer :cash, :limit => 8
 
-      t.integer :historical_value, array: true, default: []
+      t.belongs_to :exchange, index: true , foreign_key: true
+
+      t.integer :historical_portfolio, array: true, default: []
 
       t.timestamps
     end
