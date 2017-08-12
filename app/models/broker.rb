@@ -1,4 +1,5 @@
 class InsufficientFundsError < StandardError; end
+class InsufficientHoldingsError < StandardError; end
 
 class Broker < ApplicationRecord
   has_secure_password
@@ -21,8 +22,17 @@ class Broker < ApplicationRecord
   end
 
   def sell(stock, shares)
-    deposit_cash(holding.market_value)
-    Holding.destroy(holding)
+    holding = self.holdings.find_by(stock: stock)
+    raise InsufficientHoldingsError if holding.nil? || shares > holding.shares
+
+    deposit_cash(holding.stock_price*shares)
+    holding.remove_shares(shares)
+    
+    if holding.shares.zero?
+      holding.destroy
+    else
+      holding.save!
+    end
   end
 
   def update_portfolio

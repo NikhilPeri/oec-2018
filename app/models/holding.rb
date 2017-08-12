@@ -1,5 +1,3 @@
-class InsufficientHoldingsError < StandardError; end
-
 class Holding < ApplicationRecord
   belongs_to :broker
   belongs_to :stock
@@ -20,11 +18,11 @@ class Holding < ApplicationRecord
     self.book_cost += num_shares * self.stock.price
   end
 
-  def remove_shares(shares)
-    raise InsufficientHoldingsError if num_shares > self.shares
-    avg_book_cost = self.book_cost / self.shares
+  def remove_shares(num_shares)
+    avg_book_cost = self.book_cost.to_f / self.shares.to_f
+    
+    self.book_cost -= (avg_book_cost * num_shares).to_i
     self.shares -= num_shares
-    self.book_cost = avg_book_cost * self.shares
   end
 
   def market_value
@@ -33,5 +31,9 @@ class Holding < ApplicationRecord
 
   def earnings
     return market_value - self.book_cost
+  end
+
+  def stock_price
+    self.stock.price
   end
 end
