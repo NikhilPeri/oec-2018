@@ -23,4 +23,14 @@ Rails.application.routes.draw do
 
   get 'admin/login' => 'admin#login'
   post 'admin/login' => 'admin#authenticate'
+
+  #===============================================
+  #Stock routes
+  #===============================================
+  #post '/stock/new' => 'stock#create'
+  #post '/stock/update' => 'stock#update'
+  #post '/stock/delete' => 'stock#destroy'
+
+  get '/stock/:ticker/:exchange_id' => 'stock#show'
+
 end

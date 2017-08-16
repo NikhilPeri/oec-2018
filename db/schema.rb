@@ -47,12 +47,13 @@ ActiveRecord::Schema.define(version: 20170614140958) do
 
   create_table "holdings", force: :cascade do |t|
     t.bigint "broker_id"
-    t.integer "stock_id"
-    t.bigint "shares"
+    t.bigint "stock_id"
+    t.bigint "shares", default: 0
     t.bigint "book_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["broker_id"], name: "index_holdings_on_broker_id", unique: true
+    t.index ["broker_id"], name: "index_holdings_on_broker_id"
+    t.index ["stock_id"], name: "index_holdings_on_stock_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -70,5 +71,6 @@ ActiveRecord::Schema.define(version: 20170614140958) do
 
   add_foreign_key "brokers", "exchanges"
   add_foreign_key "holdings", "brokers"
+  add_foreign_key "holdings", "stocks"
   add_foreign_key "stocks", "exchanges"
 end
