@@ -2,7 +2,22 @@
 
 one:
   id: 1
-  name: "nikhil"
-  email: "nikhil@mail.com"
+  name: "Broker A"
+  email: "broker_a@gmail.com"
+  password_digest: "$2a$10$dP/RbGXs0cFJqoBsFd1q4utFw7BCfV1//BLz90zC/5KRRPsrPXF66"
+  token: "token_a"
+  exchange_id: 1
   cash: 100000000
-  token: "access_toker"
+  created_at: "2017-08-16 13:56:53"
+  updated_at: "2017-08-16 13:56:53"
+
+two:
+  id: 2
+  name: "Broker B"
+  email: "broker_b"
+  exchange_id: 1
+  password_digest: "$2a$10$dP/RbGXs0cFJqoBsFd1q4utFw7BCfV1//BLz90zC/5KRRPsrPXF66"
+  token: "token_b"
+  cash: 100000000
+  created_at: "2017-08-16 13:56:53"
+  updated_at: "2017-08-16 13:56:53"

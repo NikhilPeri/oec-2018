@@ -3,8 +3,35 @@
 one:
   id: 1
   ticker: "AAPL"
-  price: 1
+  price: 16200
   exchange_id: 1
   annual_vec: 0.0001
   intermediate_vec: 0.0001
   daily_vec: 0.0001
+  historical_price: []
+  created_at: "2017-08-16 13:56:53"
+  updated_at: "2017-08-16 13:56:53"
+
+two:
+  id: 2
+  ticker: "TSLA"
+  price: 33000
+  exchange_id: 1
+  annual_vec: 0.001
+  intermediate_vec: 0.0003
+  daily_vec: 0.0004
+  historical_price: []
+  created_at: "2017-08-16 13:56:53"
+  updated_at: "2017-08-16 13:56:53"
+
+two:
+  id: 2
+  ticker: "AMZN"
+  price: 98000
+  exchange_id: 1
+  annual_vec: -0.001
+  intermediate_vec: -0.0003
+  daily_vec: -0.0005
+  historical_price: []
+  created_at: "2017-08-16 13:56:53"
+  updated_at: "2017-08-16 13:56:53"
