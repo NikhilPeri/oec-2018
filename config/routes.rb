@@ -33,4 +33,11 @@ Rails.application.routes.draw do
 
   get '/stock/:ticker/:exchange_id' => 'stock#show'
 
+
+  #===============================================
+  #SideKiq routes
+  #===============================================
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end

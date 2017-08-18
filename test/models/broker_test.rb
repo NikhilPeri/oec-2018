@@ -23,7 +23,7 @@ class BrokerTest < ActiveSupport::TestCase
     @stock.save
     expected_book_cost += 100 * @stock.price
     @broker.buy(@stock, 100)
-    
+
     created_holding =  @broker.holdings.find_by(stock: @stock)
 
     assert_equal 200, created_holding.shares
@@ -31,7 +31,7 @@ class BrokerTest < ActiveSupport::TestCase
   end
 
   test "buy withdraws specified amount of cash from brokers account" do
-    assert_empty @broker.holdings
+    @broker.holdings.delete_all
     expected_cash = @broker.cash - @stock.price*100
     @broker.buy(@stock, 100)
 

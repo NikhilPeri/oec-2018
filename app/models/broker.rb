@@ -27,7 +27,7 @@ class Broker < ApplicationRecord
 
     deposit_cash(holding.stock_price*shares)
     holding.remove_shares(shares)
-    
+
     if holding.shares.zero?
       holding.destroy
     else
@@ -41,7 +41,7 @@ class Broker < ApplicationRecord
 
   def holding_value
     holding_value = 0;
-    self.holdings.each { |h| holding_value += h.marker_value }
+    self.holdings.each { |h| holding_value += h.market_value }
     return holding_value
   end
 

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+exchange = Exchange.new()
+exchange.save!
+
+10.times do
+  Stock.new(exchange: exchange).save!
+end

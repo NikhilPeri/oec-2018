@@ -41,10 +41,11 @@ class StockTest < ActiveSupport::TestCase
   test "historical_price tracks previous price changes" do
     initial_price = 1000
     vec = 0.01
-    stock = Stock.new(price: 1000, annual_vec: vec, intermediate_vec: vec, daily_vec: vec)
-
+    stock = Stock.new(price: initial_price, annual_vec: vec, intermediate_vec: vec, daily_vec: vec)
+    new_price = (initial_price*(1+vec)).round
+    
     stock.update_price
 
-    assert_equal [initial_price, initial_price*(1+vec)], stock.historical_price
+    assert_equal [initial_price, new_price], stock.historical_price
   end
 end

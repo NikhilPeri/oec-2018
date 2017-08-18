@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170614140958) do
 
   create_table "exchanges", force: :cascade do |t|
     t.bigint "day"
-    t.integer "update_frequency", limit: 2, default: 3
-    t.boolean "live", default: false
+    t.integer "update_frequency", limit: 2
+    t.boolean "live"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,2 +1,2 @@
 web: bundle exec rails server
-worker: bundle exec rake jobs:simulate:update
+worker: bundle exec sidekiq -c 1
