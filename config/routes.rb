@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get '/admin/configure' => 'admin#new'
   post '/admin/configure' => 'admin#create'
 
-  get 'admin/login' => 'admin#login'
-  post 'admin/login' => 'admin#authenticate'
+  get 'admin/login' => 'admin#login_form'
+  post 'admin/login' => 'admin#login'
 
   #===============================================
   #Stock routes
@@ -31,13 +31,15 @@ Rails.application.routes.draw do
   #post '/stock/update' => 'stock#update'
   #post '/stock/delete' => 'stock#destroy'
 
-  get '/stock/:ticker/:exchange_id' => 'stock#show'
+  get '/stock/:ticker' => 'stock#show'
 
+  get '/stock/api/:ticker' => 'stock#query_single'
 
   #===============================================
   #SideKiq routes
   #===============================================
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

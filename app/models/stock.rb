@@ -38,6 +38,10 @@ class Stock < ApplicationRecord
     self.daily_vec ||= Rubystats::NormalDistribution.new(self.intermediate_vec, volitility).rng
   end
 
+  def to_param
+    self.ticker
+  end
+
   def volitility
     0.003
   end

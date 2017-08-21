@@ -19,7 +19,7 @@ is compared
  - [x] implement stock price generation
  - [x] implement and test buy method for broker
  - [x] implement and test sell method for broker
- - [ ] implement simulate background job
+ - [x] implement simulate background job
  - [ ] implement broker api
  - [ ] load test broker api
  - [ ] make a pretty dashboard

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :load_admin, only: :show
+  before_action :authenticate_admin, only: :show
 
   def new
     @admin = Admin.new
@@ -16,7 +16,7 @@ class AdminController < ApplicationController
     end
   end
 
-  def authenticate
+  def login
     @admin = Admin.find_by_email(params[:admin][:email])
 
     if @admin && @admin.authenticate(params[:admin][:password])
@@ -24,7 +24,7 @@ class AdminController < ApplicationController
       redirect_to '/admin'
     else
       @errors = ["invalid username/password"]
-      render 'admin/login'
+      render 'admin/login_form'
     end
   end
 
@@ -40,10 +40,5 @@ class AdminController < ApplicationController
   private
   def signup_params
     params.require(:admin).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def load_admin
-    @admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
-    redirect_to '/admin/login' unless  @admin
   end
 end
