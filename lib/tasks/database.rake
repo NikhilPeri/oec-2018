@@ -26,6 +26,6 @@ namespace :database do
 
   desc "nuke all existing databases"
   task :nuke => :environment do
-    Exchange.each { |e| e.delete! }
+    Exchange.delete_all!
   end
 end
