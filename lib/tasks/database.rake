@@ -4,10 +4,8 @@ namespace :database do
     STDOUT.puts "Enter admin password:"
     password = STDIN.gets.strip
 
-    if Exchange.count.zero?
-      exchange = Exhange.new
-      exchange.save
-    end
+    exchange = Exchange.new
+    exchange.save if Exchange.count.zero?
 
     if Admin.count.zero?
       admin = Admin.new(exchange: exchange, name: 'Nikhil Peri', email: 'fake@email.com', password: password)
@@ -19,8 +17,9 @@ namespace :database do
       broker.save
     end
 
-    100.times do
+    10.times do
       stock = Stock.new(exchange: exchange)
+      binding.pry
       stock.save
     end
   end
