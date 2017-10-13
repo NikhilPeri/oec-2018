@@ -23,4 +23,9 @@ namespace :database do
       stock.save
     end
   end
+
+  desc "nuke all existing databases"
+  task :nuke => :environment do
+    Exchange.each { |e| e.delete! }
+  end
 end
