@@ -45,7 +45,7 @@ class Broker < ApplicationRecord
   end
 
   def holding_value
-    holdings.collect { |holding| holding.market_value }
+    holdings.sum { |holding| holding.market_value }
   end
 
   def assign_token
