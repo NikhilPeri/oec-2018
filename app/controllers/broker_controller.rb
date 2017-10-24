@@ -17,7 +17,7 @@ class BrokerController < ApplicationController
   end
 
   def authenticate
-    @broker = Admin.find_by_email(params[:broker][:email])
+    @broker = Broker.find_by_email(params[:broker][:email])
 
     if @broker && @broker.authenticate(params[:broker][:password])
       session[:broker] = @broker.id
