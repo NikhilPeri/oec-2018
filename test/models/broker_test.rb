@@ -2,8 +2,8 @@ require 'test_helper'
 
 class BrokerTest < ActiveSupport::TestCase
   setup do
-      @broker = Broker.find(1)
-      @stock = Stock.find(1)
+      @broker = brokers(:one)
+      @stock = stocks(:one)
   end
 
   test "buy adds a holding to the brokers portfolio" do
@@ -71,7 +71,7 @@ class BrokerTest < ActiveSupport::TestCase
     assert_equal expected_cash, @broker.cash
   end
 
-  test "sell removes holding if all shaes are sold" do
+  test "sell removes holding if all shares are sold" do
     @broker.buy(@stock, 100)
     @broker.sell(@stock, 100)
 

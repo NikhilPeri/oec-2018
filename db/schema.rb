@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "exchange_id"
+    t.bigint "exchange_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_admins_on_exchange_id"
   end
 
   create_table "brokers", force: :cascade do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170614140958) do
     t.index ["exchange_id"], name: "index_stocks_on_exchange_id"
   end
 
+  add_foreign_key "admins", "exchanges"
   add_foreign_key "brokers", "exchanges"
   add_foreign_key "holdings", "brokers"
   add_foreign_key "holdings", "stocks"

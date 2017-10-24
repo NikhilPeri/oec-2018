@@ -3,7 +3,7 @@ require 'test_helper'
 class StockTest < ActiveSupport::TestCase
 
   setup do
-    @exchange = Exchange.find(1)
+    @exchange = exchanges(:one)
   end
 
   test "initialize populates all variables except exchange when not specified" do
@@ -43,7 +43,7 @@ class StockTest < ActiveSupport::TestCase
     vec = 0.01
     stock = Stock.new(price: initial_price, annual_vec: vec, intermediate_vec: vec, daily_vec: vec)
     new_price = (initial_price*(1+vec)).round
-    
+
     stock.update_price
 
     assert_equal [initial_price, new_price], stock.historical_price

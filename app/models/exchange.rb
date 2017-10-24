@@ -1,4 +1,5 @@
 class Exchange < ApplicationRecord
+  has_many :admins, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :brokers, dependent: :destroy
 

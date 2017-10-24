@@ -25,7 +25,7 @@ two:
   updated_at: "2017-08-16 13:56:53"
 
 two:
-  id: 2
+  id: 3
   ticker: "AMZN"
   price: 98000
   exchange_id: 1

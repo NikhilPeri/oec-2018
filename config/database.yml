@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: oec_dev
-  username: postgres
+  username: nikhilperi
   password: password
   port: 5432
   host: 127.0.0.1
@@ -62,7 +62,7 @@ development:
 test:
   <<: *default
   database: oec_test
-  username: postgres
+  username: nikhilperi
   password: password
   port: 5432
   host: 127.0.0.1

@@ -2,14 +2,13 @@
 <div class="container">
   <h1 align="center">Stock Bots</h1>
   <div class="broker-table">
-    <% @brokers.sort_by() %>
     <% @brokers.each do |broker| %>
       <div class="broker-table__entry">
         <div class="broker-table__entry__name">
           <%= broker.name %>
         </div>
         <div class="broker-table__entry__value">
-          <%= broker %>
+          <%= broker.%>
         </div>
       </div>
     <% end %>

@@ -2,8 +2,6 @@ class Holding < ApplicationRecord
   belongs_to :broker
   belongs_to :stock
 
-  validates :broker_id, presence: true
-  validates :stock_id, presence: true
   validates :shares, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_initialize :set_defaults
@@ -20,7 +18,7 @@ class Holding < ApplicationRecord
 
   def remove_shares(num_shares)
     avg_book_cost = self.book_cost.to_f / self.shares.to_f
-    
+
     self.book_cost -= (avg_book_cost * num_shares).to_i
     self.shares -= num_shares
   end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ExchangeTest < ActiveSupport::TestCase
   setup do
-    @exchange = Exchange.find(1)
+    @exchange = exchanges(:one)
   end
 
   test "step_time does not execute if exchange is not live" do

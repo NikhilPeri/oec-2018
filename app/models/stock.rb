@@ -2,6 +2,7 @@ require 'rubystats'
 
 class Stock < ApplicationRecord
   belongs_to :exchange
+  has_many :holdings, dependent: :destroy
 
   validates :exchange, presence: true
   validates :ticker, presence: true, uniqueness: true
