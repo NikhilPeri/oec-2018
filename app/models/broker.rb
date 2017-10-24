@@ -37,7 +37,7 @@ class Broker < ApplicationRecord
   end
 
   def update_portfolio
-    historical_portfolio << value
+    historical_portfolio << total_value
   end
 
   def total_value

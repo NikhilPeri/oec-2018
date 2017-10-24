@@ -5,6 +5,6 @@ class SimulateJob < ApplicationJob
   def perform(exchange)
     exchange.step_time
 
-    self.class.set(wait: exchange.update_frequency.minutes).perform_later(exchange) if 
+    self.class.set(wait: exchange.update_frequency.minutes).perform_later(exchange) if exchange.live
   end
 end
