@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #===============================================
+  #Home routes
+  #===============================================
   root 'home#index'
+  get '/standings' => 'home#standings'
+
+  #===============================================
 
   #===============================================
   #Broker routes
@@ -22,7 +28,7 @@ Rails.application.routes.draw do
   post '/admin/configure' => 'admin#create'
 
   get 'admin/login' => 'admin#login_form'
-  post 'admin/login' => 'admin#login'
+  post 'admin/authenticate' => 'admin#authenticate'
 
   #===============================================
   #Stock routes

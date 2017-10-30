@@ -24,7 +24,7 @@ class Stock < ApplicationRecord
     self.price *= 1 + self.daily_vec
     self.price = self.price.round
 
-    self.historical_price << self.price
+    self.historical_price.unshift(self.price)
   end
 
   def update_vectors

@@ -46,6 +46,6 @@ class StockTest < ActiveSupport::TestCase
 
     stock.update_price
 
-    assert_equal [initial_price, new_price], stock.historical_price
+    assert_equal [new_price, initial_price], stock.historical_price
   end
 end

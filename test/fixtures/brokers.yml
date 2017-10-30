@@ -8,6 +8,7 @@ one:
   token: "token_a"
   exchange_id: 1
   cash: 100000000
+  historical_portfolio: [ 100000000, 120000000, 150000000 ]
   created_at: "2017-08-16 13:56:53"
   updated_at: "2017-08-16 13:56:53"
 
@@ -19,5 +20,6 @@ two:
   password_digest: "$2a$10$dP/RbGXs0cFJqoBsFd1q4utFw7BCfV1//BLz90zC/5KRRPsrPXF66"
   token: "token_b"
   cash: 100000000
+  historical_portfolio: [ 100000000, 120000000, 150000000 ]
   created_at: "2017-08-16 13:56:53"
   updated_at: "2017-08-16 13:56:53"

@@ -1,16 +1,7 @@
 <% @page_title = "Stock Bots" %>
 <div class="container">
   <h1 align="center">Stock Bots</h1>
-  <div class="broker-table">
-    <% @brokers.each do |broker| %>
-      <div class="broker-table__entry">
-        <div class="broker-table__entry__name">
-          <%= broker.name %>
-        </div>
-        <div class="broker-table__entry__value">
-          <%= money_string(broker.total_value) %>
-        </div>
-      </div>
-    <% end %>
+  <div class="broker-graph">
+    <%= line_chart standings_path, refresh: 60, xtitle: "Day", ytitle: "Portfolio Value($)", legend: "right" %>
   </div>
 </div>

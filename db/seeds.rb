@@ -9,6 +9,10 @@
 exchange = Exchange.new()
 exchange.save!
 
-10.times do
+30.times do
   Stock.new(exchange: exchange).save!
+end
+
+15.times do
+  broker = Broker.new(exchange: exchange)
 end
