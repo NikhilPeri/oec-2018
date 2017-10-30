@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :authenticate_admin, only: :show
+  before_action :load_from_session, except: %w(new create authenticate)
 
   def new
     @admin = Admin.new
@@ -9,14 +9,13 @@ class AdminController < ApplicationController
     @admin = Admin.new(signup_params)
 
     if @admin.save
-        session[:admin_id] = @admin.id
         redirect_to '/admin'
     else
       render '/admin/new'
     end
   end
 
-  def login
+  def authenticate
     @admin = Admin.find_by_email(params[:admin][:email])
 
     if @admin && @admin.authenticate(params[:admin][:password])
@@ -40,5 +39,9 @@ class AdminController < ApplicationController
   private
   def signup_params
     params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def load_from_session
+    @admin |=  Admin.find(session[:admin_id])
   end
 end
