@@ -1,0 +1,25 @@
+<div class="card">
+  <h3 class="card-header">Brokers</h3>
+  <div class="card-body">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Access Token</th>
+          <th>Cash</th>
+          <th>Holdings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Broker.all.each do |b| %>
+          <tr>
+            <td><%= b.name %>
+            <td><%= b.token %>
+            <td><%= money_string b.cash %>
+            <td><%= money_string b.holding_value %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

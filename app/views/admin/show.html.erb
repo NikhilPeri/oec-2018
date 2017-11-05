@@ -1,22 +1,11 @@
-<div class="table-responsive">
-  <table class="table-hover ">
-    <thead>
-      <tr>
-        <td>Name
-        <td>Token
-        <td>Cash
-        <td>Holdings
-      </tr>
-    </thead>
-    <tbody>
-      <% Broker.all.each do |b| %>
-        <tr>
-          <td><%=b.name%>
-          <td><%=b.token%>
-          <td><%=b.cash%>
-          <td><%=b.holding_value%>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%= render 'nav' %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <%= render 'brokers' %>
+    </div>
+    <div class="col-sm-4">
+      <%= render 'exchange' %>
+    </div>
+  </div>
 </div>

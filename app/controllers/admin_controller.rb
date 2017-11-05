@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :load_from_session, except: %w(new create authenticate)
+  before_action :load_from_session, only: %w(show)
 
   def new
     @admin = Admin.new
@@ -23,7 +23,7 @@ class AdminController < ApplicationController
       redirect_to '/admin'
     else
       @errors = ["invalid username/password"]
-      render 'admin/login_form'
+      redirect_to 'admin/login'
     end
   end
 
@@ -42,6 +42,8 @@ class AdminController < ApplicationController
   end
 
   def load_from_session
-    @admin |=  Admin.find(session[:admin_id])
+    @admin =  Admin.find(session[:admin_id])
+  rescue
+    redirect_to '/admin/login'
   end
 end
