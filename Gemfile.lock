@@ -82,6 +82,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    emd (0.1.0)
+      redcarpet
     erubi (1.6.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -150,6 +152,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    redcarpet (3.4.0)
     redis (3.3.3)
     ruby_dep (1.5.0)
     rubystats (0.2.6)
@@ -214,6 +217,7 @@ DEPENDENCIES
   capybara (~> 2.13.0)
   chartkick
   coffee-rails (~> 4.2)
+  emd
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
@@ -221,6 +225,7 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rails (~> 5.1.0)
+  redcarpet
   rubystats (~> 0.2.6)
   sass-rails (>= 3.2)
   selenium-webdriver

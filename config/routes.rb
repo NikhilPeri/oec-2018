@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #===============================================
   root 'home#index'
   get '/standings' => 'home#standings'
+  get '/docs' => 'home#docs'
 
   #===============================================
 
