@@ -1,7 +1,13 @@
 <% @page_title = "Stock Bots" %>
-<div class="container">
-  <h1 align="center">Stock Bots</h1>
-  <div class="broker-graph">
-    <%= line_chart standings_path, refresh: 60, xtitle: "Day", ytitle: "Portfolio Value($)", legend: "right" %>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1 class="display-3">StockBots</h1>
+    <p>Automating the next financial crisis</p>
+    <p><a class="btn btn-primary btn-lg" href="https://oec2018.ca/">Learn More</a></p>
   </div>
+  <h1 align="center">Market Performance</h1>
+  <%= render 'market_performance' %>
+  
+  <h1 align="center">Broker Performance</h1>
+  <%= render 'broker_performance' %>
 </div>

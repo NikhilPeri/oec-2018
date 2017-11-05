@@ -1,0 +1,22 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item active">
+    <a class="nav-link" aria-expanded="true" data-toggle="tab" href="#daily">Daily</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#weekly">Weekly</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#monthly">Monthly</a>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade in active" id="daily">
+    <%= line_chart standings_path, refresh: 60, xtitle: "Day", ytitle: "Portfolio Value($)", legend: "right" %>
+  </div>
+  <div class="tab-pane fade" id="weekly">
+    <%= line_chart standings_path, refresh: 60, xtitle: "Day", ytitle: "Portfolio Value($)", legend: "right" %>
+  </div>
+  <div class="tab-pane fade" id="monthly">
+    <%= line_chart standings_path, refresh: 60, xtitle: "Day", ytitle: "Portfolio Value($)", legend: "right" %>
+  </div>
+</div>
