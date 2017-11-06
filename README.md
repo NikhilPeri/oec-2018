@@ -20,7 +20,11 @@ is compared
  - [x] implement and test buy method for broker
  - [x] implement and test sell method for broker
  - [x] implement simulate background job
- - [ ] implement admin dashboard
+ - [ ] all stocks endpoint
+ - [ ] implement home dashboard functionality
  - [ ] implement broker dashboard for keygen
- - [ ] implement broker api
- - [ ] make a pretty home dashboard
+ - [ ] fix signups & logins
+ - [ ] implement admin dashboard
+ - [x] write docs
+ - [x] implement broker api
+ - [x] make a pretty home dashboard
