@@ -34,7 +34,9 @@ If your bot is ever compromised, you should [login]('/broker/login') and to gene
 
 # API
 Now that your are setup you can start trading using the following endpoints.
-If this is your first time making web requests; checkout the following language docs:
+The entire API is based on GET requests for ease of use, this way you can play around
+in the browser without typing a line of code.
+If this is your first time making get requests; checkout the following language docs:
 
  - [Ruby]()
  - [Python]()
@@ -50,18 +52,18 @@ Or feel free to ask your organizer for help
 stock_identifier
 :  A three letter code to identify a stock (ex. AAPL)
 ```
-This will cost $3 and will return the current stock price, along with
-the last 10 prices of the stock
+This will cost $3 and will return the current stock price in cents, along with
+the last 10 prices of the stock in cents
 
 _Example Response_
 
 ```
 {
-  ticker: 'OTT',
-  price: 394.22,
-  historical_prices: [ ... ],
   success: true,
-  errors: null
+  errors: [],
+  ticker: 'OTT',
+  price: 39422,
+  historical_prices: [ ... ]
 }
 ```
 
@@ -84,9 +86,9 @@ _Example Response_
 
 ```
 {
-  ticker: 'OTT',
   success: true,
-  errors: null
+  errors: [],
+  ticker: 'OTT'
 }
 ```
 
@@ -110,9 +112,9 @@ _Example Response_
 
 ```
 {
-  ticker: 'OTT',
   success: true,
-  errors: null
+  errors: [],
+  ticker: 'OTT'
 }
 ```
 
@@ -123,25 +125,56 @@ _Example Response_
 key
 :  Your api key
 
-This will return your account value in dollars, along all your current holdings.
+This will return your account value in cents, along all your current holdings.
+Each holding will list the ticker, number of shares,
+[book cost](https://www.accountingtools.com/articles/what-is-the-difference-between-book-value-and-market-value.html)
+and [market value](https://www.accountingtools.com/articles/what-is-the-difference-between-book-value-and-market-value.html)
 This will charge a $20 fee
 
 _Example Response_
 
 ```
 {
-  cash: 100000.00,
+  success: true,
+  errors: [],
+  cash: 10000000,
   holdings: [
     {
       ticker: 'OTT',
       shares: 100,
-      price: 394.22,
+      book_cost: 10232,
+      market_value: 18827,
     },
     {
       ticker: 'HAT',
       shares: 590,
-      price: 20.19,
+      book_cost: 10232,
+      market_value: 18827,
     }
   ]
 }
+```
+
+>#### Error Messages
+
+Error responses come in the form
+
+```
+{
+  success: true,
+  errors: [InvalidAPIKey, InvalidStockTicker],
+}
+```
+
+There are four types of errors to expect:
+
+```
+InvalidAPIKey
+:  There is no broker with the requested api key
+InvalidStockTicker
+:  There is no stock with the requested ticker symbol
+InsufficientFunds
+:  Your account does not have the required amount of cash
+InsufficientShares
+:  Your account does not have the required number of shares
 ```

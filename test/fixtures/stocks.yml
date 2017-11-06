@@ -8,7 +8,7 @@ one:
   annual_vec: 0.0001
   intermediate_vec: 0.0001
   daily_vec: 0.0001
-  historical_price: []
+  historical_price: [120, 130, 170, 195, 166, 123, 110, 98, 122, 134, 156]
   created_at: "2017-08-16 13:56:53"
   updated_at: "2017-08-16 13:56:53"
 

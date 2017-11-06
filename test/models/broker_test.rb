@@ -40,13 +40,13 @@ class BrokerTest < ActiveSupport::TestCase
 
   test "withdraw raises expection if inssufficient funds" do
     @broker.cash = 0
-    assert_raise InsufficientFundsError do
+    assert_raise Broker::InsufficientFundsError do
       @broker.withdraw_cash(100)
     end
   end
 
   test "sell raises InsufficientHoldingsError if stock not owned" do
-    assert_raise InsufficientHoldingsError do
+    assert_raise Broker::InsufficientSharesError do
       @broker.sell(@stock, 100)
     end
   end
@@ -54,7 +54,7 @@ class BrokerTest < ActiveSupport::TestCase
   test "sell raises InsufficientHoldingsError is not enough stock held" do
     @broker.buy(@stock, 50)
 
-    assert_raise InsufficientHoldingsError do
+    assert_raise Broker::InsufficientSharesError do
       @broker.sell(@stock, 100)
     end
   end

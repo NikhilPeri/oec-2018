@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get '/docs' => 'home#docs'
 
   #===============================================
+  #API routes
+  #===============================================
+  get '/api/stock' => 'api#stock_quote'
+  get '/api/buy' => 'api#buy'
+  get '/api/sell' => 'api#sell'
+  get '/api/account' => 'api#account'
 
   #===============================================
   #Broker routes

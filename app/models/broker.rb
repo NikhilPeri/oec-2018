@@ -1,6 +1,3 @@
-class InsufficientFundsError < StandardError; end
-class InsufficientHoldingsError < StandardError; end
-
 class Broker < ApplicationRecord
   has_secure_password
 
@@ -14,6 +11,9 @@ class Broker < ApplicationRecord
   validates :name, presence: true
   validates :token, presence: true
 
+  class InsufficientFundsError < StandardError; end
+  class InsufficientSharesError < StandardError; end
+
   def buy(stock, shares)
     withdraw_cash(shares*stock.price)
 
@@ -24,7 +24,7 @@ class Broker < ApplicationRecord
 
   def sell(stock, shares)
     holding = holdings&.find_by(stock: stock)
-    raise InsufficientHoldingsError if holding.nil? || shares > holding.shares
+    raise InsufficientSharesError if holding.nil? || shares > holding.shares
 
     deposit_cash(holding.stock_price*shares)
     holding.remove_shares(shares)
