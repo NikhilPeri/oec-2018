@@ -1,30 +1,21 @@
 ### Summary
-This project is the OEC 2018 Programming Challenge.
+This project is the Ontario Engineering Competition 2018 Programming Challenge.
 
-Competitors will be required to implement a BrokerBot, which is is
-responsible for trying to make the most amount of $$$ by trading stocks
+Competitors will have 8 hours to develop and iterate on a BrokerBot.  Each BrokerBot
+has access to a virtual stock exchange where they can buy and sell stocks.  The bot which
+goes home with the most $$ at the end of the day wins.
 
-### How it works?
-Stock prices are simulated using a process adapted from
-[Brownian Motion](https://en.wikipedia.org/wiki/Brownian_motion).
+### How to contribute
+This app is far from complete, the next steps are to:
+ * Improve the dashboard to better display information about the market
+ * Introduce a news simulation which generate headlines based on the future stock performance
 
-Endpoints are exposed to get current and historical prices of a stock.
-Competitors can then use this data to make a decision on when to buy
-or sell a stock.
+To contribute you should fork this repository, hack away and open a pull request.
 
-Each transaction is logged, and the value of each BrokerBots portfolio
-is compared
+### How to watch
+You can watch the next financial crisis live during the competition on the
+[dashbord](https://www.oec-2018.herokuapp.com)
 
-### TODO
- - [x] implement stock price generation
- - [x] implement and test buy method for broker
- - [x] implement and test sell method for broker
- - [x] implement simulate background job
- - [ ] all stocks endpoint
- - [ ] implement home dashboard functionality
- - [ ] implement broker dashboard for keygen
- - [ ] fix signups & logins
- - [ ] implement admin dashboard
- - [x] write docs
- - [x] implement broker api
- - [x] make a pretty home dashboard
+### How to play
+You can check out the [docs](https://www.oec-2018.herokuapp.com/docs) for details on how to
+get you API key, and what endpoints are available to your bot
