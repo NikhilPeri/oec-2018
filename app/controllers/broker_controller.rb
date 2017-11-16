@@ -1,5 +1,5 @@
 class BrokerController < ApplicationController
-  before_action :load_from_session, except: %w(new create authenticate)
+  before_action :load_from_session, except: %w(new create login authenticate)
 
   def new
     @broker = Broker.new

@@ -23,7 +23,7 @@ class AdminController < ApplicationController
       redirect_to '/admin'
     else
       @errors = ["invalid username/password"]
-      redirect_to 'admin/login'
+      redirect_to '/admin/login'
     end
   end
 
