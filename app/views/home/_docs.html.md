@@ -44,6 +44,22 @@ If this is your first time making get requests; checkout the following language 
 
 Or feel free to ask your organizer for help
 
+>#### Get Stock List
+
+`GET /api/stock/list?key=[api_key]`
+
+_Example Response_
+
+```
+{
+  success: true,
+  errors: [],
+  stock_tickers: [ ... ]
+}
+```
+
+This will return a list
+
 >#### Get Current Price
 
 `GET /api/stock?ticker=[stock_identifier]&key=[api_key]`
@@ -52,8 +68,9 @@ Or feel free to ask your organizer for help
 stock_identifier
 :  A three letter code to identify a stock (ex. AAPL)
 ```
-This will cost $3 and will return the current stock price in cents, along with
-the last 10 prices of the stock in cents
+This will return the current stock price in cents, along with
+the last historical prices of the stock in cents sorted from oldest
+to newest (ie. the last price in the list is the most recent)
 
 _Example Response_
 

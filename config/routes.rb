@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #API routes
   #===============================================
   get '/api/stock' => 'api#stock_quote'
+  get '/api/stock/list' => 'api#stock_list'
   get '/api/buy' => 'api#buy'
   get '/api/sell' => 'api#sell'
   get '/api/account' => 'api#account'

@@ -9,14 +9,8 @@ namespace :setup do
     exchange = Exchange.new
     exchange.save!
 
-    #exchange = Exchange.new(name: 'production')
-    #exchange.save!
-
-    #exchange = Exchange.new(name: 'test')
-    #exchange.save!
-
     STDOUT.puts "Enter admin password:"
-    password = "lolololololo"
+    password = STDIN.gets.strip
 
     puts "\n=== Creating Admin Account ==="
     admin = Admin.new(exchange: exchange, name: 'Nikhil Peri', email: 'fake@email.com', password: password)

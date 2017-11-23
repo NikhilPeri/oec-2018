@@ -9,6 +9,7 @@ class BrokerController < ApplicationController
     @broker = Broker.new(signup_params)
 
     if @broker.save
+        session[:broker_id] = @broker.id
         redirect_to '/broker'
     else
       render '/broker/new'
@@ -30,7 +31,7 @@ class BrokerController < ApplicationController
   private
 
   def signup_params
-    params.require(:broker).permit(:name, :signup_key, :email, :password, :password_confirmation)
+    params.require(:broker).permit(:name, :email, :password, :password_confirmation)
   end
 
   def load_from_session

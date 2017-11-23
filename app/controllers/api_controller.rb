@@ -6,14 +6,24 @@ class ApiController < ApplicationController
   BUY_FEE = 1000
   ACCOUNT_FEE = 2000
 
+  def stock_list
+    if result[:success]
+      result.merge!({
+        stock_tickers: Stock.all.map{ |s| s.ticker }
+      })
+    end
+
+    render json: result
+  end
+
   def stock_quote
-    withdraw_cash(QUOTE_FEE)
+    #withdraw_cash(QUOTE_FEE)
     stock = fetch_stock(params[:ticker])
     if result[:success]
       result.merge!({
         ticker: stock.ticker,
         price: stock.price,
-        historical_price: stock.historical_price[0..10],
+        historical_price: stock.historical_price,
       })
     end
 
@@ -21,7 +31,7 @@ class ApiController < ApplicationController
   end
 
   def buy
-    withdraw_cash(QUOTE_FEE)
+    withdraw_cash(BUY_FEE)
     stock = fetch_stock(params[:ticker])
     if result[:success]
       begin
@@ -39,6 +49,7 @@ class ApiController < ApplicationController
   end
 
   def sell
+    withdraw_cash(BUY_FEE)
     stock = fetch_stock(params[:ticker])
     if result[:success]
       begin

@@ -4,12 +4,14 @@ class Broker < ApplicationRecord
   belongs_to :exchange
   has_many :holdings, dependent: :destroy
 
-  after_initialize :assign_token
-  after_initialize :assign_cash
+  before_validation  :assign_token
+  before_validation :assign_cash
+  before_validation :assign_exchange
 
   validates :exchange, presence: true
   validates :name, presence: true
   validates :token, presence: true
+  validates :email, uniqueness: true
 
   class InsufficientFundsError < StandardError; end
   class InsufficientSharesError < StandardError; end
@@ -58,6 +60,10 @@ class Broker < ApplicationRecord
 
   def assign_cash
     self.cash ||= 10000000
+  end
+
+  def assign_exchange
+    self.exchange = Exchange.first
   end
 
   def withdraw_cash(amount)
