@@ -18,9 +18,9 @@ namespace :setup do
     puts admin.inspect
 
     puts "\n=== Creating Test Broker Account ==="
-    broker = Broker.new(exchange: exchange, name: 'Test Broker', email: 'fake@email.com', password: password)
-    broker.save!
-    puts broker.inspect
+    #broker = Broker.new(exchange: exchange, name: 'Test Broker', email: 'fake@email.com', password: password)
+    #broker.save!
+    #puts broker.inspect
 
     puts "\n=== Creating Stocks ==="
     30.times do
