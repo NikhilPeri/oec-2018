@@ -16,11 +16,6 @@ class StockController < ApplicationController
     render json: { ticker: @stock.ticker, price: @stock.price, historical_price: historical_price}
   end
 
-  def query_multi
-    @stocks =
-    render json: {}
-  end
-
   def query_start_day
     params[:start].to_i if params[:start]&.to_i&.positive?
   end

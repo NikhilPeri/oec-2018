@@ -4,7 +4,7 @@ class Exchange < ApplicationRecord
   has_many :brokers, dependent: :destroy
 
   attribute :day, default: 1
-  attribute :update_frequency, default: 3
+  attribute :update_frequency, default: 1
   attribute :live, default: false
 
   def start

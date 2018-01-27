@@ -3,11 +3,7 @@ Your challenge is to develop a trading bot, that makes the most $$$.
 You will be given a $100,000 of starting capital.  You can choose from
 100 stocks on the market, to buy sell or hold.  
 
-Interacting with the market will cost you
-
-- $3 for every stock quote
-- $10 for every sell operation
-- $20 for account status
+Interacting with the market will cost you $10 for every buy & sell operation
 
 Every minute of realife is one hour on the market, you can see the current
 standings [here](/)
@@ -27,10 +23,12 @@ Keep your code safe, especially your access token!
 Remember _Compound Intrest_ your goals should be to start trading A$AP.
 
  1. Get an Access Token from your competition organizer
- 2. Head over to this link to [register]('/broker/register') to register your broker
+ 2. Head over to this link to [register](/broker/register) to register your broker
  3. You should see your API Key here, this will allow you to make trades
 
-If your bot is ever compromised, you should [login]('/broker/login') and to generate a new token
+If your bot is ever compromised, you should [login](/broker/login) and to generate a new token
+If you have any questions please comment in our group [chat](https://github.com/NikhilPeri/resume/issues/1)
+this is also my resume, and I am looking for a summer internship.
 
 # API
 Now that your are setup you can start trading using the following endpoints.
@@ -38,9 +36,9 @@ The entire API is based on GET requests for ease of use, this way you can play a
 in the browser without typing a line of code.
 If this is your first time making get requests; checkout the following language docs:
 
- - [Ruby]()
- - [Python]()
- - [Java]()
+ - [Ruby](https://github.com/httprb/http)
+ - [Python](http://docs.python-requests.org/en/master/)
+ - [Java](http://hc.apache.org/httpclient-3.x/)
 
 Or feel free to ask your organizer for help
 

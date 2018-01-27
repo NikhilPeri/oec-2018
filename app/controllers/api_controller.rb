@@ -2,9 +2,7 @@ class ApiController < ApplicationController
   before_action :fetch_broker
 
   # all fees in cents
-  QUOTE_FEE = 500
-  BUY_FEE = 1000
-  ACCOUNT_FEE = 2000
+  TRANSACTION_FEE = 1000
 
   def stock_list
     if result[:success]
@@ -31,7 +29,7 @@ class ApiController < ApplicationController
   end
 
   def buy
-    withdraw_cash(BUY_FEE)
+    withdraw_cash(TRANSACTION_FEE)
     stock = fetch_stock(params[:ticker])
     if result[:success]
       begin
@@ -49,7 +47,7 @@ class ApiController < ApplicationController
   end
 
   def sell
-    withdraw_cash(BUY_FEE)
+    withdraw_cash(TRANSACTION_FEE)
     stock = fetch_stock(params[:ticker])
     if result[:success]
       begin

@@ -45,9 +45,9 @@ Rails.application.routes.draw do
   #post '/stock/update' => 'stock#update'
   #post '/stock/delete' => 'stock#destroy'
 
-  get '/stock/:ticker' => 'stock#show'
+  # get '/stock/:ticker' => 'stock#show'
 
-  get '/stock/api/:ticker' => 'stock#query_single'
+  # get '/stock/api/:ticker' => 'stock#query_single'
 
   #===============================================
   #SideKiq routes
