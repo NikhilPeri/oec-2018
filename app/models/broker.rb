@@ -39,11 +39,11 @@ class Broker < ApplicationRecord
   end
 
   def historical_price
-    historical_portfolio.map { |price| price/100 }
+    historical_portfolio.map { |price| price/100.0 }
   end
 
   def update_portfolio
-    historical_portfolio.unshift(total_value)
+    historical_portfolio << total_value
   end
 
   def total_value
