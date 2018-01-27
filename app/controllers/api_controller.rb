@@ -37,6 +37,7 @@ class ApiController < ApplicationController
         result.merge!({
           ticker: stock.ticker,
         })
+        @broker.save!
       rescue Broker::InsufficientFundsError
         result[:success] = false
         result[:errors] << 'InsufficientFunds'
@@ -55,6 +56,7 @@ class ApiController < ApplicationController
         result.merge!({
           ticker: stock.ticker,
         })
+        @broker.save!
       rescue Broker::InsufficientSharesError
         result[:success] = false
         result[:errors] << 'InsufficientShares'
