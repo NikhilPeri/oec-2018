@@ -30,6 +30,21 @@ If your bot is ever compromised, you should [login](/broker/login) and to genera
 If you have any questions please comment in our group [chat](https://github.com/NikhilPeri/resume/issues/1)
 this is also my resume, and I am looking for a summer internship.
 
+# Judging & Submission
+All Teams must submit code via a private github repository inviting @NikhilPeri as a collaborator
+or by sending a zip to nperi104@uottawa.ca no late submissions or commits accepted.
+
+All Teams must prepare a 10 min presentation with a 5 minute question period.
+
+
+| Criteria             | Max Points | Description                                                                                                                                                                                                                |
+|----------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Code Quality         | 30         |  <ul><li>Readability of the code</li><li> Functionality of the code </li><li>This score is based entirely on judges</li></ul>|
+| System Performance   | 20         |<ul><li>Minimization of the number of requests </li><li>Reliance to data outages and failures </li><li>Minimize computational time and memory complexity</li><li>Techniques for deploying and iterating on Algorithms in realtime</li></ul>|
+| Presentability         | 5          |<ul><li>Building or utilizing reliable technologies to deploy your solution</li><li>Product Quality for client, in terms of usability</li></ul>|
+| Prediction Algorithm | 35         | <ul><li>The understanding and ability to explain the Prediction Algorithm used</li><li>The quality of features selected for algorithm </li><li>Presentation of intresting research and findings about simulation</li></ul>|
+| Making That Money    | 10         |  `score = 10 / overall_rank`  where the highest ranking player made the most money                                                                                                                                         |
+
 # API
 Now that your are setup you can start trading using the following endpoints.
 The entire API is based on GET requests for ease of use, this way you can play around
