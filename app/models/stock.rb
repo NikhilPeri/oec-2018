@@ -34,10 +34,10 @@ class Stock < ApplicationRecord
     end
 
     if self.exchange.day % 3 == 0
-      self.intermediate_vec = Rubystats::NormalDistribution.new(self.annual_vec, volitility).rng
+      self.intermediate_vec = Rubystats::NormalDistribution.new(self.annual_vec/3, volitility).rng
     end
 
-    self.daily_vec = Rubystats::NormalDistribution.new(self.intermediate_vec, volitility).rng
+    self.daily_vec = Rubystats::NormalDistribution.new(self.intermediate_vec/3, volitility).rng
   end
 
   def to_param
