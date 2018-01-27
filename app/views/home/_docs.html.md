@@ -93,7 +93,7 @@ _Example Response_
   errors: [],
   ticker: 'OTT',
   price: 39422,
-  historical_prices: [ ... ]
+  historical_price: [ ... ]
 }
 ```
 
