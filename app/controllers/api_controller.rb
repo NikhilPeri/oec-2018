@@ -105,7 +105,7 @@ class ApiController < ApplicationController
   end
 
   def withdraw_cash(amount)
-    @broker&.withdraw_cash(QUOTE_FEE)
+    @broker&.withdraw_cash(amount)
   rescue Broker::InsufficientFundsError
     result[:success] = false
     result[:errorss] << 'InsufficientFunds'
