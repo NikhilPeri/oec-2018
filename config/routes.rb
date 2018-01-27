@@ -52,8 +52,8 @@ Rails.application.routes.draw do
   #===============================================
   #SideKiq routes
   #===============================================
-  if Rails.env.development?
-    require 'sidekiq/web'
-    mount Sidekiq::Web => '/sidekiq'
-  end
+#  if Rails.env.development?
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq/hadslfjkadhsljkasdhjlkhadsljkadhsljkdhasljkadhsljdhafsljk'
+#  end
 end
