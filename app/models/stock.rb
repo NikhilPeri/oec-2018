@@ -16,7 +16,7 @@ class Stock < ApplicationRecord
     self.historical_price = [ self.price ] if self.historical_price.empty?
     self.ticker ||= ('A'..'Z').to_a.shuffle[0..2].join
 
-    self.annual_vec ||= Rubystats::NormalDistribution.new(0, 0.001).rng
+    self.annual_vec ||= Rubystats::NormalDistribution.new(0, 0.1).rng
     self.intermediate_vec ||= Rubystats::NormalDistribution.new(self.annual_vec, volitility).rng
     self.daily_vec ||= Rubystats::NormalDistribution.new(self.intermediate_vec, volitility).rng
   end
@@ -30,7 +30,7 @@ class Stock < ApplicationRecord
 
   def update_vectors
     if self.exchange.day % 30 == 0
-      self.annual_vec = Rubystats::NormalDistribution.new(0, 0.001).rng
+      self.annual_vec = Rubystats::NormalDistribution.new(0, 1).rng
     end
 
     if self.exchange.day % 3 == 0
