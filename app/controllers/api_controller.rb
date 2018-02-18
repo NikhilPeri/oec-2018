@@ -86,6 +86,17 @@ class ApiController < ApplicationController
     render json: result
   end
 
+  def uotta_hack
+    cookie = request.cookies['cookie'].present?
+    ip = params[:ip_addr].present?
+
+    if cookie && name
+      render status: :ok, json: { sucess: true, data: ('a'..'z').to_a.map{|c| c => rand()*105} }
+    else
+      render status: :not_found, json: {success: false, data: 'missing cookie "name" and ip_addr "param"'}
+    end
+  end
+
   private
 
   def fetch_broker
