@@ -7,6 +7,16 @@ class Exchange < ApplicationRecord
   attribute :update_frequency, default: 1
   attribute :live, default: false
 
+  CHAOS_AGENTS = [
+    ChaosAgent::Fourier,
+    ChaosAgent::Bankrupcy,
+    ChaosAgent::Ipo,
+    ChaosAgent::Bear,
+    ChaosAgent::Bull,
+    ChaosAgent::Buyer,
+    ChaosAgent::Seller,
+  ]
+
   def start
     self.update!(live: true)
     SimulateJob.perform_later(self)
@@ -21,8 +31,9 @@ class Exchange < ApplicationRecord
 
     self.day += 1
 
+    CHAOS_AGENTS.each do { |agent| agent.perform(self) }
+
     self.stocks.each do |stock|
-      stock.update_vectors
       stock.update_price
       stock.save!
     end

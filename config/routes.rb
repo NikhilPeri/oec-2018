@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   #===============================================
   get '/broker' => 'broker#show'
 
-  #get '/broker/register' => 'broker#new'
-  #post '/broker/register' => 'broker#create'
+  get '/broker/register' => 'broker#new'
+  post '/broker/register' => 'broker#create'
 
   get '/broker/login' => 'broker#login'
   post '/broker/login' => 'broker#authenticate'
@@ -32,10 +32,10 @@ Rails.application.routes.draw do
   #===============================================
   get '/admin' => 'admin#show'
 
-  #get '/admin/configure' => 'admin#new'
-  #post '/admin/configure' => 'admin#create'
+  get '/admin/configure' => 'admin#new'
+  post '/admin/configure' => 'admin#create'
 
-  get 'admin/falangey' => 'admin#login_form'
+  get 'admin/login' => 'admin#login_form'
   post 'admin/authenticate' => 'admin#authenticate'
 
   #===============================================
@@ -52,8 +52,8 @@ Rails.application.routes.draw do
   #===============================================
   #SideKiq routes
   #===============================================
-#  if Rails.env.development?
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq/hadslfjkadhsljkasdhjlkhadsljkadhsljkdhasljkadhsljdhafsljk'
-#  end
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

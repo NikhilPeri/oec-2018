@@ -29,10 +29,11 @@ namespace :setup do
       puts stock.inspect
     end
   end
+
   task :simulate => :environment do
     puts "simulating stocks"
     e = Exchange.first
     e.update!(live: true)
-    240.times { e.step_time }
+    240.times { SimulateJob.perform(e) }
   end
 end

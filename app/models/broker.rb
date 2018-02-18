@@ -3,6 +3,7 @@ class Broker < ApplicationRecord
 
   belongs_to :exchange
   has_many :holdings, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   before_validation  :assign_token
   before_validation :assign_cash
@@ -18,6 +19,7 @@ class Broker < ApplicationRecord
 
   def buy(stock, shares)
     withdraw_cash(shares*stock.price)
+    transactions.create(action: 'buy', stock: stock, shares: shares, day: exchange.day)
 
     holding = holdings&.find_by(stock: stock) || Holding.new(broker: self, stock: stock)
     holding.add_shares(shares)
@@ -27,6 +29,7 @@ class Broker < ApplicationRecord
   def sell(stock, shares)
     holding = holdings&.find_by(stock: stock)
     raise InsufficientSharesError if holding.nil? || shares > holding.shares
+    transactions.create(action: 'sell', stock: stock, shares: shares, day: exchange.day)
 
     deposit_cash(holding.stock_price*shares)
     holding.remove_shares(shares)

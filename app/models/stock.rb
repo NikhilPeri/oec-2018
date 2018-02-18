@@ -10,6 +10,8 @@ class Stock < ApplicationRecord
 
   before_validation :generate_defaults
 
+  VOLITILITY = 0.09
+
   def generate_defaults
     return if persisted?
     self.price ||= 100 + Random.rand(50000)
@@ -17,8 +19,8 @@ class Stock < ApplicationRecord
     self.ticker ||= ('A'..'Z').to_a.shuffle[0..2].join
 
     self.annual_vec ||= Rubystats::NormalDistribution.new(0, 0.1).rng
-    self.intermediate_vec ||= Rubystats::NormalDistribution.new(self.annual_vec, volitility).rng
-    self.daily_vec ||= Rubystats::NormalDistribution.new(self.intermediate_vec, volitility).rng
+    self.intermediate_vec ||= Rubystats::NormalDistribution.new(self.annual_vec, VOLITILITY).rng
+    self.daily_vec ||= Rubystats::NormalDistribution.new(self.intermediate_vec, VOLITILITY).rng
   end
 
   def update_price
@@ -28,23 +30,7 @@ class Stock < ApplicationRecord
     self.historical_price << self.price
   end
 
-  def update_vectors
-    if self.exchange.day % 30 == 0
-      self.annual_vec = Rubystats::NormalDistribution.new(0, 1).rng
-    end
-
-    if self.exchange.day % 3 == 0
-      self.intermediate_vec = Rubystats::NormalDistribution.new(self.annual_vec/3, volitility).rng
-    end
-
-    self.daily_vec = Rubystats::NormalDistribution.new(self.intermediate_vec/3, volitility).rng
-  end
-
   def to_param
     self.ticker
-  end
-
-  def volitility
-    0.09
   end
 end
