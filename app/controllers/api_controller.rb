@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   before_action :fetch_broker
+  skip_before_action :verify_authenticity_token, only: [:uotta_hack]
 
   # all fees in cents
   TRANSACTION_FEE = 1000
@@ -87,11 +88,13 @@ class ApiController < ApplicationController
   end
 
   def uotta_hack
+    binding.pry
     cookie = request.cookies['cookie'].present?
     ip = params[:ip_addr].present?
 
     if cookie && name
-      render status: :ok, json: { sucess: true, data: ('a'..'z').to_a.map{|c| c => rand()*105} }
+      data = ('a'..'z').to_a.map{|c| [c, rand()*105] }.to_h
+      render status: :ok, json: { sucess: true, data: data }
     else
       render status: :not_found, json: {success: false, data: 'missing cookie "name" and ip_addr "param"'}
     end
