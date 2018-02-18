@@ -91,7 +91,7 @@ class ApiController < ApplicationController
     cookie = request.cookies['cookie'].present?
     ip = params[:ip_addr].present?
 
-    if cookie && name
+    if cookie && ip
       data = ('a'..'z').to_a.map{|c| [c, rand()*105] }.to_h
       render status: :ok, json: { sucess: true, data: data }
     else
