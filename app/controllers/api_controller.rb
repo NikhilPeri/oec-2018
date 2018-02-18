@@ -88,7 +88,6 @@ class ApiController < ApplicationController
   end
 
   def uotta_hack
-    binding.pry
     cookie = request.cookies['cookie'].present?
     ip = params[:ip_addr].present?
 
