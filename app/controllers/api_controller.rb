@@ -96,7 +96,7 @@ class ApiController < ApplicationController
       data = ('a'..'z').to_a.map{|c| [c, rand()*105] }.to_h
       render status: :ok, json: { sucess: true, data: data }
     else
-      render status: :not_found, json: {success: false, data: 'missing cookie "name" and ip_addr "param"'}
+      render status: :not_found, json: {success: false, data: 'missing cookie "cookie=you_name" and param "ip_addr=your_ip"'}
     end
   end
 
